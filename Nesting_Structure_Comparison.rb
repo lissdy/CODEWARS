@@ -1,5 +1,5 @@
 #https://www.codewars.com/kata/520446778469526ec0000001/solutions/ruby
-
+#Nesting Structure Comparison
 
 #MY SOLUTION
 class Array
@@ -23,7 +23,6 @@ end
 
 
 #BEST PRACTICE
-
 class Array
   def same_structure_as(a)
     return false if self.class!=a.class || size!=a.size 
