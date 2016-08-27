@@ -2,23 +2,31 @@
 #Nesting Structure Comparison
 
 #MY SOLUTION
+# class Array
+#   def same_structure_as(other_array)
+#      0.upto(self.size - 1).each do |x|
+#       if self[x].class == Array && other_array[x].class == Array
+#         return false if self[x].size != other_array[x].size
+#         self[x].same_structure_as(other_array[x])
+#       else
+#          if self[x].class != other_array[x].class
+#           binding.pry
+#           return false
+#         elsif x == (self.size - 1)
+#           return true
+#         end 
+#       end 
+#     end   
+#      return true  
+#   end
+# end
+
+
 class Array
   def same_structure_as(other_array)
-     0.upto(self.size - 1).each do |x|
-      if self[x].class == Array && other_array[x].class == Array
-        return false if self[x].size != other_array[x].size
-        self[x].same_structure_as(other_array[x])
-      else
-         if self[x].class != other_array[x].class
-          binding.pry
-          return false
-        elsif x == (self.size - 1)
-          return true
-        end 
-      end 
-    end   
-     return true  
-  end
+    return false if self.class != other_array.class || self.size != other_array.size
+    self.each_index{|x,i| return false if x.class == Array && !x.same_structure_as(other_array[i])}
+    true 
 end
 
 
