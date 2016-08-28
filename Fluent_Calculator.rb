@@ -1,4 +1,32 @@
 #https://www.codewars.com/kata/fluent-calculator/solutions?show-solutions=1
+class Calc
+   def initialize(*args)
+   	  if args.size == 2
+   	  	@operation = args[0]
+   	  	@number = args[1]
+   	  end	
+   end
+
+   %w(zero one two three four five six seven eight nine).each_with_index do |number,index|
+   	  define_method number do
+   	  	if @operation.nil?
+   	  		index
+   	  	else
+   	  		@number.send(@operation,index)
+   	  	end	
+   	  	
+   	  end	
+   end
+
+end
+
+class Fixnum
+	def plus; Calc.new(:+,self) end
+	def minus; Calc.new(:-,self) end
+	def times; Calc.new(:*,self) end
+	def divided_by; Calc.new(:/,self) end	
+end	
+
 
 
 ##BEST PRACTICE
